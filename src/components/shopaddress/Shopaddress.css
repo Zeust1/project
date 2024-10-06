@@ -1,8 +1,16 @@
+.locationpage {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .location-list {
     width: 20%;
-    height: auto;
+    height: 600px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 5%;
+    overflow: scroll;
 }
 
 .location {
@@ -20,9 +28,13 @@
     display: none;
     margin: 5px 30px 5px;
     font-size: 12px;
-    border-left: 1px solid;
-    /* border-bottom: 1px solid; */
+    border-left: 2px solid;
     p {
         padding: 5px;
     }
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.map {
+    width: 70%;
 }
