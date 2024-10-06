@@ -1,0 +1,27 @@
+.homepage {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    font-size: x-large;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.homepage img {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 192, 192);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.title {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title {
+    line-height: 50px;
+    line-break:auto;
+}

@@ -8,7 +8,7 @@ import Carticon from "../public/shopping-cart-add.svg";
 import Locationicon from "../public/location.png"
 
 import Shopaddress from "./components/shopaddress/Shopaddress";
-import Map from "./components/map/Map";
+import Homepage from "./components/homepage/Homepage";
 
 import Shoplocation from "../shoplocation.json"
 
@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="header">
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <img
@@ -71,22 +71,24 @@ function App() {
               style={{
                 width: "120px",
                 height: "200px",
-                backgroundColor: "rgba(173, 97, 50)",
+                backgroundColor: "rgb(247, 247,247, 0.4)",
+                backdropFilter: "blur(20px)"
               }}
             >
               <dl>
-                <dt>Trang chủ</dt>
-                <dt>Đăng nhập</dt>
-                <dt>Đăng xuất</dt>
+                <dt><Link to="/">Trang chủ</Link></dt>
+                <dt><Link to="/">Đăng nhập</Link></dt>
+                <dt><Link to="/">Đăng xuất</Link></dt>
               </dl>
             </div>
           </div>
         </div>
       </div>
       <Routes>
+        <Route path="/" element={<Homepage/>} />
         <Route path="/location-store" element={<Shopaddress Shoplocation={Shoplocation}/>} />
       </Routes>
-    </>
+    </div>
   );
 }
 

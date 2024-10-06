@@ -3,14 +3,17 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    z-index: 2;
 }
 
 
 .location-list {
     width: 20%;
     height: 600px;
+    color: rgb(94, 53, 27);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .location {
@@ -32,6 +35,7 @@
     p {
         padding: 5px;
     }
+    color: rgb(94, 53, 27);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
