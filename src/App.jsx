@@ -23,6 +23,7 @@ function App() {
     }
   };
 
+
   return (
     <div className="container">
       <div className="header">
@@ -34,7 +35,12 @@ function App() {
           />
           <h1>Coffe shop</h1>
         </div>
-        <input type="text" placeholder="Bạn cần tìm loại nước uống nào ?" />
+        <div className="navigation">
+          <Link to="/" element={<Homepage/>} >Trang chủ</Link>
+          <p onClick={() => {window.scrollTo({top: 10, behavior: "smooth"});}}>Cà phê</p>
+          <p>Thực đơn</p>
+          <p onClick={() => {window.scrollTo({top: 500, behavior: "smooth"});}}>Về chúng tối</p>
+        </div>
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <span><img src={Locationicon} alt="locationicon" /><Link to="/location-store" element={<Shopaddress/>}>Tìm cửa hàng</Link></span>
           <div className="cart-icon" style={{ width: "30px", height: "30px" }}>

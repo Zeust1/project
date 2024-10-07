@@ -19,14 +19,14 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal  ()  {
+export default function BasicModal  ({data})  {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen} style={{fontStyle: "italic",fontSize: "18px", color: "#AD6132",textDecoration: "underline"}}>Tìm hiểu thêm</Button>
+      <Button onClick={handleOpen} style={{fontStyle: "italic",fontSize: "18px", color: "#AD6132",textDecoration: "underline", fontWeight: "bold"}}>{data.btn}</Button>
       <Modal
         className='boxmodal'
         open={open}
@@ -35,14 +35,14 @@ export default function BasicModal  ()  {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="box">
-          <img src={Latteinbox} alt="latte" />
+          <img src={data.details.img} alt="latte" />
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Latte Cà phê là gì?
+            <p>{data.details.row1}</p><br />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <p>Latte hay cafe latte là một thức uống nổi tiếng có nguồn gốc từ Ý với thành phần chính bao gồm 1 shot cà phê đen kết hợp cùng vị ngọt, béo ngậy của sữa. Tại Scandinavie và Bắc Âu, tên gọi latte chỉ một loại đồ uống kết hợp giữa espresso và sữa, trong khi latte của người Pháp là sự kết hợp giữa espresso và sữa đánh (khuấy).</p><br />
-            <p>Món đồ uống này có được kết hợp các nguyên liệu với tỉ lệ phù hợp cộng với cách bài trí bắt mắt vừa tạo nên phần nhìn hấp dẫn, vừa mang đến hương vị tuyệt vời, được đánh giá cao từ những người yêu thích cafe.</p><br />
-            <p>Ngoài ra, điểm nổi bật khi nhắc tới latte chính là nghệ thuật tạo hình. Hình vẽ được tạo lên bằng cách rót sữa (sau khi được gia nhiệt làm nóng sữa với phương pháp kỹ thuật steamed milk hoặc frothed milk) để tạo nên nhiều hình như lá, tim, khuôn mặt,…</p>
+            <p>{data.details.row2}</p><br />
+            <p>{data.details.row3}</p><br />
+            <p>{data.details.row4}</p>
           </Typography>
         </Box>
       </Modal>

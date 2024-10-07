@@ -3,13 +3,17 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    z-index: 2;
+    position: absolute;
+    top: 100px;
+    left: 5%;
+    z-index: -1;
 }
 
 
 .location-list {
     width: 20%;
     height: 600px;
+    background-color: white;
     color: rgb(94, 53, 27);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     overflow: scroll;
