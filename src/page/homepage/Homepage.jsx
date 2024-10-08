@@ -1,11 +1,11 @@
 import "./Homepage.css";
 
 
-import BasicModal from "../modal/BasicModal";
+import BasicModal from "../../components/modal/BasicModal";
 
 import latte from "../../../public/latte.jpg"
 import about from "../../../public/aboutdetail.png"
-import data from "../../../data.json"
+import data from "../../api/data.json"
 
 const Homepage = () => {
   return (

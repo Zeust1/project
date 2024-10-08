@@ -8,9 +8,10 @@ import Carticon from "../public/shopping-cart-add.svg";
 import Locationicon from "../public/location.png"
 
 import Shopaddress from "./components/shopaddress/Shopaddress";
-import Homepage from "./components/homepage/Homepage";
+import Homepage from "./page/homepage/Homepage";
+import Signinpage from "./page/signinpage/Signinpage";
 
-import Shoplocation from "../shoplocation.json"
+import Shoplocation from "../src/api/shoplocation.json"
 
 function App() {
   const [userIcon, setUserIcon] = useState("hideMenu");
@@ -93,6 +94,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/location-store" element={<Shopaddress Shoplocation={Shoplocation}/>} />
+        <Route path="/signin-page" element={<Signinpage/>} />
       </Routes>
     </div>
   );

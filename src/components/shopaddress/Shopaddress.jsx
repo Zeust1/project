@@ -2,7 +2,7 @@ import React from "react";
 import "./Shopaddress.css";
 import Map from "../map/Map";
 
-import shoplocation from "../../../shoplocation.json";
+import shoplocation from "../../api/shoplocation.json";
 import showmore from "../../../public/angle-small-down.svg";
 
 const Shopaddress = ({ Shoplocation }) => {
