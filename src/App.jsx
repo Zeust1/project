@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Logo from "../public/logo.png";
 import Usericon from "../public/circle-user.svg";
@@ -14,7 +15,10 @@ import Signinpage from "./page/signinpage/Signinpage";
 import Shoplocation from "../src/api/shoplocation.json"
 
 function App() {
+
   const [userIcon, setUserIcon] = useState("hideMenu");
+  const location = useLocation().pathname
+
 
   const showMenuUser = () => {
     if (userIcon == "hideMenu") {
@@ -84,7 +88,7 @@ function App() {
             >
               <dl>
                 <dt><Link to="/">Trang chủ</Link></dt>
-                <dt><Link to="/">Đăng nhập</Link></dt>
+                <dt><Link to="/signin-page">Đăng nhập</Link></dt>
                 <dt><Link to="/">Đăng xuất</Link></dt>
               </dl>
             </div>
