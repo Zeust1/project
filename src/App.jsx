@@ -18,7 +18,6 @@ import Shoplocation from "../src/api/shoplocation.json";
 
 function App() {
   const [userLogin, setUserLogin] = useState("");
-  const [userIcon, setUserIcon] = useState("hideMenu");
   const location = useLocation().pathname;
 
   let pTag1 = null;
@@ -48,13 +47,6 @@ function App() {
     pTag2 = <p>Về chúng tôi</p>;
   }
 
-  // const showMenuUser = () => {
-  //   if (userIcon == "hideMenu") {
-  //     setUserIcon("showMenu");
-  //   } else {
-  //     setUserIcon("hideMenu");
-  //   }
-  // };
 
   const signout = () => {
     setUserLogin("");

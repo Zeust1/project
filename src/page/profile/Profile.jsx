@@ -8,14 +8,14 @@ const Profile = ({info}) => {
             <img src={userimg} alt="user" style={{width: "100%",height: "300px"}}/>
         </div>
         <div className='content' style={{width: "60%"}}>
-            <p>Họ tên: </p>
-            <p>Năm sinh: </p>
-            <p>CCCD: </p>
+            <p>Họ tên: {info.name}</p>
+            <p>Năm sinh: {info.birthday}</p>
+            <p>CCCD: {info.id}</p>
             <p>Name : {info.username}</p>
             <p>Password: {info.password}</p>
-            <p>Email: </p>
-            <p>Sđt: </p>
-            <p>Level: </p>
+            <p>Email: {info.email}</p>
+            <p>Sđt: {info.phone}</p>
+            <p>Level: {info.level}</p>
         </div>
     </div>
   )
