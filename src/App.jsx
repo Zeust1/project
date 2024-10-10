@@ -153,7 +153,7 @@ function App() {
           element={<Shopaddress Shoplocation={Shoplocation} />}
         />
         <Route
-          path="/signin-page/*"
+          path="/signin-page"
           element={<Signinpage setUserLogin={setUserLogin} />}
         />
         <Route path="/signup-page" element={<Signuppage/>}/>

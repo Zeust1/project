@@ -1,7 +1,7 @@
 import "./Signinpage.css";
 import latteimg from "../../../public/lateinbox.jpg";
 
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { find } from "lodash";
 import Alert from "@mui/material/Alert";
@@ -27,10 +27,6 @@ const Signinpage = ({ setUserLogin }) => {
   const goHome = () => {
     navigate("/"); // Điều hướng về Route cha là Dashboard
   };
-
-  const goSignuppage = () => {
-    navigate("/signup-page")
-  }
 
   const [formValue, setFormValue] = useState({
     username: "",
@@ -62,7 +58,6 @@ const Signinpage = ({ setUserLogin }) => {
   };
 
   return (
-    <>
       <div className="signinpage">
         <form className="form" onSubmit={onSignIn}>
           <h1>Sign In</h1>
@@ -92,7 +87,7 @@ const Signinpage = ({ setUserLogin }) => {
           </div>
           <div className="signup-in">
             <div>
-              <button className="signup" onClick={goSignuppage}>Don't have account</button>
+              <Link to="/signup-page">Don't have account</Link>
             </div>
             <div className="btnform">
               <button type="submit">Sign in</button>
@@ -133,11 +128,7 @@ const Signinpage = ({ setUserLogin }) => {
           <img src={latteimg} alt="img" />
         </div>
         <Onloading ref={childRef} />
-        <Routes>
-          <Route path="/signup-page" element={<Signuppage />} />
-        </Routes>
       </div>
-    </>
   );
 };
 
