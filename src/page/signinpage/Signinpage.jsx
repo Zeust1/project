@@ -2,16 +2,26 @@ import "./Signinpage.css";
 import latteimg from "../../../public/lateinbox.jpg";
 
 import { Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
-import { isEqual } from "lodash";
+import { useRef,useState } from "react";
+import {find} from "lodash";
 
 import Signuppage from "../signuppage/Signuppage";
 import Onloading from "../../components/modalonloading/Onloading";
 
 import userapi from "../../api/userapi";
 
-const Signinpage = () => {
-  const [onLoading,setOnLoading] = useState("")
+const Signinpage = ({setUserLogin}) => {
+  const childRef = useRef();
+
+  // Hàm để gọi hàm trong component con
+  const onLoading = () => {
+    childRef.current.onOpen()
+  };
+
+  const onClose = () => {
+    childRef.current.onClose()
+  };
+
 
   const [formValue, setFormValue] = useState({
     username: "",
@@ -25,15 +35,17 @@ const Signinpage = () => {
 
   const onSignIn = async (e) => {
     e.preventDefault();
+    onLoading()
     const data = await userapi();
-    data.forEach((value) => {
-      if (isEqual(value, formValue)) {
-        window.alert(`hello ${value.username}`);
-        return;
-      } else {
-        return;
-      }
-    });
+    if(find(data,formValue)){
+      setUserLogin(formValue.username)
+      onClose()
+      return
+    }else{
+      onClose()
+      alert("username & password is wrong")
+      return
+    }
   };
 
   return (
@@ -49,6 +61,7 @@ const Signinpage = () => {
             autoComplete="new-password"
             onChange={onChangeForm}
             placeholder="Username"
+            required
           />
           <i className="fa-solid fa-user fa-xl"></i>
         </div>
@@ -60,6 +73,7 @@ const Signinpage = () => {
             autoComplete="new-password"
             onChange={onChangeForm}
             placeholder="Password"
+            required
           />
           <i className="fa-solid fa-lock fa-xl"></i>
         </div>
@@ -83,7 +97,7 @@ const Signinpage = () => {
       <div className="image">
         <img src={latteimg} alt="img"/>
       </div>
-      <Onloading onLoading={onLoading}/>
+      <Onloading ref={childRef}/>
     </div>
   );
 };

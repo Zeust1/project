@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import { forwardRef, useImperativeHandle } from 'react';
 import loading from '../../../public/loading.svg'
 
 const style = {
@@ -13,16 +14,18 @@ const style = {
   transform: 'translate(-50%, -50%)'
 };
 
-export default function Onloading({Onloading}) {
+const Onloading = (props, ref) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-    console.log(Onloading)
+
+  useImperativeHandle(ref ,() => ({onOpen:handleOpen,onClose:handleClose}))
+
+
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -35,3 +38,6 @@ export default function Onloading({Onloading}) {
     </div>
   );
 }
+
+
+export default forwardRef(Onloading)

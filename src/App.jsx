@@ -15,10 +15,20 @@ import Signinpage from "./page/signinpage/Signinpage";
 import Shoplocation from "../src/api/shoplocation.json"
 
 function App() {
-
+  const [userLogin,setUserLogin] = useState("")
   const [userIcon, setUserIcon] = useState("hideMenu");
   const location = useLocation().pathname
 
+  let pTag1 = null
+  let pTag2 = null
+
+  if(location === "/"){
+      pTag1 = <p  onClick={() => {window.scrollTo({top: 10, behavior: "smooth"});}}>Cà phê</p>
+      pTag2 = <p onClick={() => {window.scrollTo({top: 500, behavior: "smooth"});}}>Về chúng tối</p>
+  }else {
+    pTag1 = <p>Cà phê</p>
+    pTag2 = <p>Về chúng tôi</p>
+  }
 
   const showMenuUser = () => {
     if (userIcon == "hideMenu") {
@@ -42,9 +52,9 @@ function App() {
         </div>
         <div className="navigation">
           <Link to="/" element={<Homepage/>} >Trang chủ</Link>
-          <p onClick={() => {window.scrollTo({top: 10, behavior: "smooth"});}}>Cà phê</p>
+          {pTag1}
           <p>Thực đơn</p>
-          <p onClick={() => {window.scrollTo({top: 500, behavior: "smooth"});}}>Về chúng tối</p>
+          {pTag2}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <span><img src={Locationicon} alt="locationicon" /><Link to="/location-store" element={<Shopaddress/>}>Tìm cửa hàng</Link></span>
@@ -93,12 +103,13 @@ function App() {
               </dl>
             </div>
           </div>
+          {userLogin && <p style={{color: "#AD6132",fontWeight: "bold",fontSize: "18px"}}>Hello, {userLogin}</p>}
         </div>
       </div>
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/location-store" element={<Shopaddress Shoplocation={Shoplocation}/>} />
-        <Route path="/signin-page" element={<Signinpage/>} />
+        <Route path="/signin-page" element={<Signinpage setUserLogin={setUserLogin}/>} />
       </Routes>
     </div>
   );
