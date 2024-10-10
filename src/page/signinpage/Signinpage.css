@@ -90,3 +90,23 @@
     justify-content: space-evenly;
     cursor: pointer;
 }
+
+.signin-ok {
+    display: none;
+}
+
+.signin-err {
+    display: block;
+}
+
+.signup {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.signup:hover {
+    color: #AD6132;
+}
