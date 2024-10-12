@@ -23,7 +23,6 @@ import Shoplocation from "../src/api/shoplocation.json";
 
 function App() {
   const [userLogin, setUserLogin] = useState("");
-  const [userIcon, setUserIcon] = useState("hideMenu");
   const location = useLocation().pathname;
 // tâm
   const [cartItems, setCartItems] = useState([]); 
@@ -60,6 +59,10 @@ function App() {
     pTag2 = <p>Về chúng tôi</p>;
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c27ca6945542350cd6461f76f13557ccf6f57ed
   const signout = () => {
     setUserLogin("");
   };

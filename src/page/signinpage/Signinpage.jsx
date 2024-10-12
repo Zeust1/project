@@ -56,7 +56,10 @@ const Signinpage = ({ setUserLogin }) => {
         })
         return;
       }else{
+<<<<<<< HEAD
         console.log(true)
+=======
+>>>>>>> 8c27ca6945542350cd6461f76f13557ccf6f57ed
         onClose();
         setStatus("signin-err")
         return;
