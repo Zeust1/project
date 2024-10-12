@@ -45,16 +45,22 @@ const Signinpage = ({ setUserLogin }) => {
     e.preventDefault();
     onLoading();
     const data = await userapi();
-    if (find(data, formValue)) {
-      setUserLogin(formValue);
-      onClose();
-      goHome();
-      return;
-    } else {
-      onClose();
-      setStatus("signin-err")
-      return;
-    }
+    console.log(data)
+      if (find(data, formValue)){
+        onClose();
+        goHome();
+        data.forEach((user) => {
+          if(user.username === formValue.username && user.password === formValue.password){
+            setUserLogin(user);
+          }
+        })
+        return;
+      }else{
+        console.log(true)
+        onClose();
+        setStatus("signin-err")
+        return;
+      }
   };
 
   return (

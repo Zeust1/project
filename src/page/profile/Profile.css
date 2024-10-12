@@ -3,9 +3,12 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    gap: 14px;
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
     line-height: 60px;
 }
 

@@ -13,6 +13,11 @@ import Homepage from "./page/homepage/Homepage";
 import Signinpage from "./page/signinpage/Signinpage";
 import Profile from "./page/profile/Profile";
 import Signuppage from "./page/signuppage/Signuppage";
+import Menu from "./page/Menu/menu"
+import CheckoutModal from"../src/components/CheckoutModal/CheckoutModal.jsx";
+import CartModal from "./components/CartModal/CartModal.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+
 
 import Shoplocation from "../src/api/shoplocation.json";
 
@@ -20,6 +25,13 @@ function App() {
   const [userLogin, setUserLogin] = useState("");
   const [userIcon, setUserIcon] = useState("hideMenu");
   const location = useLocation().pathname;
+// tâm
+  const [cartItems, setCartItems] = useState([]); 
+  const [isCartOpen, setIsCartOpen] = useState(false); 
+  const [isDetailOpen, setIsDetailOpen] = useState(false); 
+  const [selectedProduct, setSelectedProduct] = useState(null); 
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+// tâm
 
   let pTag1 = null;
   let pTag2 = null;
@@ -48,18 +60,43 @@ function App() {
     pTag2 = <p>Về chúng tôi</p>;
   }
 
-  // const showMenuUser = () => {
-  //   if (userIcon == "hideMenu") {
-  //     setUserIcon("showMenu");
-  //   } else {
-  //     setUserIcon("hideMenu");
-  //   }
-  // };
-
   const signout = () => {
     setUserLogin("");
   };
+// tâm
+  const handleShowDetail = (product) => {
+    setSelectedProduct(product);
+    setIsDetailOpen(true);
+  };
 
+  const handleCloseDetail = () => {
+    setIsDetailOpen(false);
+    setSelectedProduct(null);
+  };
+
+
+  const handleAddToCart = (product) => {
+    setCartItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(
+        (item) => item.id === product.id && item.selectedOption === product.selectedOption
+      );
+  
+      if (existingItemIndex !== -1) {
+        return prevItems.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...product, quantity: 1, options: [product.selectedOption] }];
+      }
+    });
+  };
+
+  const toggleCartModal = () => {
+    setIsCartOpen(!isCartOpen); 
+  };
+// tâm
   return (
     <div className="container">
       <div className="header">
@@ -74,7 +111,7 @@ function App() {
         <div className="navigation">
           <Link to="/">Trang chủ</Link>
           {pTag1}
-          <p>Thực đơn</p>
+          <Link to="/menu-page">Thực đơn</Link>
           {pTag2}
           {userLogin && <Link to="/profile">Welcome, {userLogin.username}</Link>}
         </div>
@@ -88,6 +125,7 @@ function App() {
           <div className="cart-icon" style={{ width: "30px", height: "30px" }}>
             <img
               src={Carticon}
+              onClick={toggleCartModal}
               alt="user icon"
               style={{ width: "30px", height: "30px", cursor: "pointer" }}
             />
@@ -104,7 +142,7 @@ function App() {
                 fontSize: "10px",
               }}
             >
-              1
+              {cartItems.length}
             </p>
           </div>
           <div className="iconuer" style={{ width: "30px", height: "30px" }}>
@@ -157,7 +195,26 @@ function App() {
           element={<Signinpage setUserLogin={setUserLogin} />}
         />
         <Route path="/signup-page" element={<Signuppage/>}/>
+        <Route path="/checkout" element={<CheckoutModal />} />
+        <Route
+          path="/menu-page"
+          element={
+            <Menu
+              onShowDetail={handleShowDetail}
+              onAddToCart={handleAddToCart}
+            />
+          }
+        />
       </Routes>
+      <CartModal
+        open={isCartOpen}
+        onClose={toggleCartModal}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
+      <div className="Footer">
+        <Footer />
+      </div>
     </div>
   );
 }
